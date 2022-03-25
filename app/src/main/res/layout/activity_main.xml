@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/Theme.tlo"
     tools:context=".MainActivity">
 
     <EditText
@@ -11,15 +12,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="100dp"
+        android:autofillHints=""
+        android:background="#959595"
+        android:ellipsize="none"
         android:ems="10"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:text="Hasło"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/MainPasswordText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Zaloguj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="100dp"
+        android:onClick="Zaloguj"
+        android:text="@string/Zaloguj"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MainPassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>
