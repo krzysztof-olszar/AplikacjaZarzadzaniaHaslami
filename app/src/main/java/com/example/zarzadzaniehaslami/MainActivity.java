@@ -1,5 +1,5 @@
 package com.example.zarzadzaniehaslami;
-
+//Toast.makeText(MainActivity.this, "Saved your text", Toast.LENGTH_LONG).show();
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -34,11 +34,10 @@ public class MainActivity extends AppCompatActivity {
             File MainHaslo = new File(file, "MainHaslo.txt");
             if(!MainHaslo.exists()) {
                 FileWriter writer = new FileWriter(MainHaslo);
-                writer.write("Zosia");
+                writer.write("qwerty");
                 writer.flush();
                 writer.close();
             }
-            //Toast.makeText(MainActivity.this, "Saved your text", Toast.LENGTH_LONG).show();
         } catch (Exception e) { }
     }
 
