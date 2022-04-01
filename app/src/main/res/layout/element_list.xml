@@ -25,8 +25,11 @@
                 android:id="@+id/ServiceName"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:clickable="false"
                 android:text="NAZWA USLUGI"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp" />
         </LinearLayout>
 
     </RelativeLayout>

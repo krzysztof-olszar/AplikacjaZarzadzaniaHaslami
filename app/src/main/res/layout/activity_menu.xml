@@ -16,4 +16,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/element_list" />
+
+    <Button
+        android:id="@+id/dodaj"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:padding="0dp"
+        android:paddingLeft="0dp"
+        android:paddingTop="0dp"
+        android:paddingRight="0dp"
+        android:paddingBottom="0dp"
+        android:text="+"
+        android:textSize="34sp"
+        android:theme="@style/Theme.button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GlownaLista" />
 </androidx.constraintlayout.widget.ConstraintLayout>

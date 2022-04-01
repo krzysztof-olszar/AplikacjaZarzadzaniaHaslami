@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="glowny">#FFE0E0E0</color>
     <color name="kolorTla">#FF0A0A0A</color>
+    <color name="kolorPrzycisku">#FF404040</color>
 </resources>

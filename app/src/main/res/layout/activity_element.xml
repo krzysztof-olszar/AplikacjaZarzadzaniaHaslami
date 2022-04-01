@@ -14,6 +14,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="128dp"
         android:text="Button"
+        android:theme="@style/Theme.button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,6 +27,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="128dp"
         android:text="Button"
+        android:theme="@style/Theme.button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Login" />

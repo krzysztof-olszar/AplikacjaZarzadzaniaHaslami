@@ -16,6 +16,8 @@
     </style>
     <style name="Theme.tlo" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:background">@color/kolorTla</item>
-
+    </style>
+    <style name="Theme.button" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:backgroundTint">@color/kolorPrzycisku</item>
     </style>
 </resources>
