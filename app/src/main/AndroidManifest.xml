@@ -21,11 +21,15 @@
         </activity>
         <activity
             android:name=".MainMenu"
-            android:exported="true">
+            android:exported="false">
         </activity>
         <activity
             android:name=".MainElement"
-            android:exported="true">
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".MainDodaj"
+            android:exported="false">
         </activity>
     </application>
 
