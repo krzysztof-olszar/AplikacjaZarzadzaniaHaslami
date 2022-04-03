@@ -65,6 +65,8 @@
         android:layout_height="51dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="29dp"
+        android:onClick="przesunLewo"
+        android:theme="@style/Theme.button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/arrowleft" />
@@ -75,6 +77,8 @@
         android:layout_height="51dp"
         android:layout_marginTop="29dp"
         android:layout_marginEnd="32dp"
+        android:onClick="przesunPrawo"
+        android:theme="@style/Theme.button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/arrowright" />

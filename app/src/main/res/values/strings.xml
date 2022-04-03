@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">ZarzadzanieHaslami</string>
-    <string name="MainPasswordText">Hasło</string>
+    <string name="MainPasswordText">qwerty</string>
     <string name="Zaloguj">Zaloguj</string>
 </resources>
