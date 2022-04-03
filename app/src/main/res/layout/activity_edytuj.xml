@@ -125,8 +125,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="180dp"
         android:layout_marginBottom="104dp"
-        android:theme="@style/Theme.button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ok" />
+        android:src="@drawable/ok" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -82,4 +82,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/arrowright" />
+
+    <ImageButton
+        android:id="@+id/binButton"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/bin" />
+
+    <ImageButton
+        android:id="@+id/gearButton"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gear" />
 </androidx.constraintlayout.widget.ConstraintLayout>
