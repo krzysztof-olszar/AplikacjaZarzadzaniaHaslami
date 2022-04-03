@@ -15,17 +15,18 @@ import java.io.FileReader;
 public class MainElement extends Activity {
     int licznik=0;
     CzytajPlik czytajPlik;
+    String name;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_element);
 
         Intent intent = this.getIntent();
-        String name = intent.getStringExtra("nazwa");
+        name = intent.getStringExtra("nazwa");
         String path = "dane/Baza/"+name;
         File file = new File(MainElement.this.getFilesDir(), path);
 
         czytajPlik = new CzytajPlik(file);
-        Log.println(Log.INFO,"info: ", Integer.toString(czytajPlik.ilosc));
+        //Log.println(Log.INFO,"info: ", Integer.toString(czytajPlik.ilosc));
         //Log.println(Log.INFO,"element",file.getPath());
 
 
@@ -56,5 +57,15 @@ public class MainElement extends Activity {
         buttonLogin.setText(czytajPlik.loginy.get(licznik));
         buttonPassword.setText(czytajPlik.hasla.get(licznik));
         textViewLinki.setText(czytajPlik.linki.get(licznik));
+    }
+
+    public void edytuj(View view){
+        Intent intent = new Intent(MainElement.this,MainEdytuj.class);
+        intent.putExtra("nazwa", name);
+        intent.putExtra("login", czytajPlik.loginy.get(licznik));
+        intent.putExtra("haslo", czytajPlik.hasla.get(licznik));
+        intent.putExtra("linki", czytajPlik.linki.get(licznik));
+        intent.putExtra("licznik", Integer.toString(licznik));
+        startActivity(intent);
     }
 }

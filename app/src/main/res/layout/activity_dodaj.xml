@@ -125,7 +125,7 @@
         android:layout_marginStart="180dp"
         android:layout_marginBottom="104dp"
         android:onClick="Dodaj"
+        android:src="@drawable/ok"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ok" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,6 +31,10 @@
             android:name=".MainDodaj"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".MainEdytuj"
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>
