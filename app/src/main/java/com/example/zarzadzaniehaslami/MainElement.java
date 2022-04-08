@@ -2,6 +2,9 @@ package com.example.zarzadzaniehaslami;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -121,6 +124,14 @@ public class MainElement extends Activity {
             }
         });
         builder.show();
+    }
+
+    public void skopiuj(View view){
+        TextView textview = (TextView) view;
+
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("ZH",textview.getText().toString());
+        clipboard.setPrimaryClip(clip);
     }
 
 }
