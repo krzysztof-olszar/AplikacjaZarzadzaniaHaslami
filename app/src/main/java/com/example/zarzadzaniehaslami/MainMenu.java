@@ -57,5 +57,9 @@ public class MainMenu extends Activity {
         });
     }
 
+    public void zmienHaslo(View view){
+        Intent intent = new Intent(this, MainZmienHaslo.class);
+        startActivity(intent);
+    }
 
 }

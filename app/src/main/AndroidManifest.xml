@@ -37,9 +37,11 @@
         </activity>
         <activity
             android:name=".MainHaslo"
-            android:exported="false"
-            android:
-            >
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".MainZmienHaslo"
+            android:exported="false">
         </activity>
     </application>
 

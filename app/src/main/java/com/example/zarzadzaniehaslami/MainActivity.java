@@ -33,11 +33,8 @@ public class MainActivity extends AppCompatActivity {
         try {
             File MainHaslo = new File(file, "MainHaslo.txt");
             if(!MainHaslo.exists()) {
-
-                FileWriter writer = new FileWriter(MainHaslo);
-                writer.write("qwerty");
-                writer.flush();
-                writer.close();
+                Intent intent = new Intent(this, MainHaslo.class);
+                startActivity(intent);
             }
         } catch (Exception e) { }
     }

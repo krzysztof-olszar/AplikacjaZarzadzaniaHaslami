@@ -33,4 +33,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/GlownaLista" />
+
+    <ImageButton
+        android:id="@+id/Gear"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="344dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="zmienHaslo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/gear" />
 </androidx.constraintlayout.widget.ConstraintLayout>
