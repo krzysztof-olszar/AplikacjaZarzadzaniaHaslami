@@ -20,4 +20,8 @@
     <style name="Theme.button" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:backgroundTint">@color/kolorPrzycisku</item>
     </style>
+    <style name="popup" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/glowny</item>
+        <item name="android:textColor">@color/kolorTla</item>
+    </style>
 </resources>

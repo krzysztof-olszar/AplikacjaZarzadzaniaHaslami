@@ -27,6 +27,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="116dp"
         android:layout_marginEnd="128dp"
+        android:onClick="skopiuj"
         android:text="Button"
         android:theme="@style/Theme.button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,6 +42,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="128dp"
+        android:onClick="skopiuj"
         android:text="Button"
         android:theme="@style/Theme.button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +71,7 @@
         android:theme="@style/Theme.button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrowleft" />
+        android:src="@drawable/arrowleft" />
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -81,7 +83,7 @@
         android:theme="@style/Theme.button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrowright" />
+        android:src="@drawable/arrowright" />
 
     <ImageButton
         android:id="@+id/binButton"
@@ -89,9 +91,10 @@
         android:layout_height="51dp"
         android:layout_marginStart="95dp"
         android:layout_marginBottom="100dp"
+        android:onClick="usun"
+        android:src="@drawable/bin"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/bin" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/gearButton"
@@ -102,5 +105,5 @@
         android:onClick="edytuj"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/gear" />
+        android:src="@drawable/gear" />
 </androidx.constraintlayout.widget.ConstraintLayout>
