@@ -35,6 +35,12 @@
             android:name=".MainEdytuj"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".MainHaslo"
+            android:exported="false"
+            android:
+            >
+        </activity>
     </application>
 
 </manifest>
