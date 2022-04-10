@@ -5,6 +5,8 @@ import android.util.Log;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,12 +17,13 @@ public class CzytajPlik {
     FileReader fileReader;
     BufferedReader bufferedReader;
     int ilosc=0;
-
-    CzytajPlik(File file){
+    File file;
+    FileWriter fileWriter;
+    CzytajPlik(File plik){
         try{
+            this.file = plik;
             fileReader = new FileReader(file);
             bufferedReader = new BufferedReader(fileReader);
-
             String temp = bufferedReader.readLine();
             for(int i=0;temp!=null;i++){
                 loginy.add(temp);
@@ -37,5 +40,16 @@ public class CzytajPlik {
         }
     }
 
+    public void konwertuj(String OldKey) throws IOException {
+        fileWriter = new FileWriter(file,false);
+        for(int i=0;i<ilosc;i++){
+            fileWriter.write(Szyfrowanie.convert(OldKey,loginy.get(i))+"\n");
+            fileWriter.write(Szyfrowanie.convert(OldKey,hasla.get(i))+"\n");
+            fileWriter.write(Szyfrowanie.convert(OldKey,linki.get(i))+"\n");
+            fileWriter.write("----------\n");
+        }
+        fileWriter.flush();
+        fileWriter.close();
+    }
 
 }

@@ -2,6 +2,7 @@ package com.example.zarzadzaniehaslami;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,10 +41,24 @@ public class MainZmienHaslo extends Activity {
                 return;
             }
             FileWriter writer = new FileWriter(file);
-            Szyfrowanie.SECRET_KEY = haslo;
             writer.write(Szyfrowanie.SHA256(haslo));
             writer.flush();
             writer.close();
+
+            String OldKey = Szyfrowanie.SECRET_KEY;
+            Szyfrowanie.SECRET_KEY = haslo;
+            //tutaj wszystko convertuj
+            File path = new File(MainZmienHaslo.this.getFilesDir(), "dane/Baza");
+            if (!path.exists()) {
+                path.mkdir();
+            }
+            String[] listaPlikow = path.list();
+            for(int i=0;i<listaPlikow.length;i++){
+                File dane = new File(path,listaPlikow[i]);
+
+                CzytajPlik czytajPlik = new CzytajPlik(dane);
+                czytajPlik.konwertuj(OldKey);
+            }
         }catch (Exception e) { }
         finish();
     }

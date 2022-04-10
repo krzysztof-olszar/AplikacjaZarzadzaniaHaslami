@@ -90,4 +90,28 @@ public class Szyfrowanie {
         }
         return null;
     }
+
+    public static String convert(String OldSECRET_KEY, String strToConvert){
+        try
+        {
+            /* Declare a byte array. */
+            byte[] iv = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+            IvParameterSpec ivspec = new IvParameterSpec(iv);
+            /* Create factory for secret keys. */
+            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+            /* PBEKeySpec class implements KeySpec interface. */
+            KeySpec spec = new PBEKeySpec(OldSECRET_KEY.toCharArray(), SALTVALUE.getBytes(), 65536, 256);
+            SecretKey tmp = factory.generateSecret(spec);
+            SecretKeySpec secretKey = new SecretKeySpec(tmp.getEncoded(), "AES");
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+            cipher.init(Cipher.DECRYPT_MODE, secretKey, ivspec);
+            /* Retruns decrypted value. */
+            strToConvert = new String(cipher.doFinal(Base64.getDecoder().decode(strToConvert)));
+        }
+        catch (InvalidAlgorithmParameterException | InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e)
+        {
+            Log.println(Log.INFO,"Błąd","Error occured during decryption: " + e.toString());
+        }
+        return encrypt(strToConvert);
+    }
 }
