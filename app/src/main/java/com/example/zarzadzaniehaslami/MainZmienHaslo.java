@@ -35,12 +35,13 @@ public class MainZmienHaslo extends Activity {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String stareHasloWPliku = bufferedReader.readLine();
 
-            if(!stareHaslo.equals(stareHasloWPliku)){
+            if(!Szyfrowanie.SHA256(stareHaslo).equals(stareHasloWPliku)){
                 Toast.makeText(MainZmienHaslo.this, "Złe stare hasło", Toast.LENGTH_LONG).show();
                 return;
             }
             FileWriter writer = new FileWriter(file);
-            writer.write(haslo);
+            Szyfrowanie.SECRET_KEY = haslo;
+            writer.write(Szyfrowanie.SHA256(haslo));
             writer.flush();
             writer.close();
         }catch (Exception e) { }

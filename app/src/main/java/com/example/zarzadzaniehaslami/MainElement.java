@@ -65,17 +65,17 @@ public class MainElement extends Activity {
         TextView textViewLinki = findViewById(R.id.Linki);
 
 
-        buttonLogin.setText(czytajPlik.loginy.get(licznik));
-        buttonPassword.setText(czytajPlik.hasla.get(licznik));
-        textViewLinki.setText(czytajPlik.linki.get(licznik));
+        buttonLogin.setText(Szyfrowanie.decrypt(czytajPlik.loginy.get(licznik)));
+        buttonPassword.setText(Szyfrowanie.decrypt(czytajPlik.hasla.get(licznik)));
+        textViewLinki.setText(Szyfrowanie.decrypt(czytajPlik.linki.get(licznik)));
     }
 
     public void edytuj(View view){
         Intent intent = new Intent(MainElement.this,MainEdytuj.class);
         intent.putExtra("nazwa", name);
-        intent.putExtra("login", czytajPlik.loginy.get(licznik));
-        intent.putExtra("haslo", czytajPlik.hasla.get(licznik));
-        intent.putExtra("linki", czytajPlik.linki.get(licznik));
+        intent.putExtra("login", Szyfrowanie.decrypt(czytajPlik.loginy.get(licznik)));
+        intent.putExtra("haslo", Szyfrowanie.decrypt(czytajPlik.hasla.get(licznik)));
+        intent.putExtra("linki", Szyfrowanie.decrypt(czytajPlik.linki.get(licznik)));
         intent.putExtra("licznik", Integer.toString(licznik));
         startActivity(intent);
     }
@@ -126,7 +126,7 @@ public class MainElement extends Activity {
         builder.show();
     }
 
-    public void skopiuj(View view){
+    public void skopiuj(View view){//schowek
         TextView textview = (TextView) view;
 
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);

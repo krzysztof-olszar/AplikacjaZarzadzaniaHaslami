@@ -29,9 +29,9 @@ public class MainDodaj extends Activity {
             File file = new File(path, nazwa.getText()+".txt");
 
             FileWriter writer = new FileWriter(file,true);
-            writer.write(login.getText()+"\n");
-            writer.write(haslo.getText()+"\n");
-            writer.write(linki.getText()+"\n");
+            writer.write(Szyfrowanie.encrypt(login.getText().toString())+"\n");
+            writer.write(Szyfrowanie.encrypt(haslo.getText().toString())+"\n");
+            writer.write(Szyfrowanie.encrypt(linki.getText().toString())+"\n");
             writer.write("----------\n");
             writer.flush();
             writer.close();

@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String haslo = bufferedReader.readLine();
-            if(wpisaneHaslo.equals(haslo)){
+            if(Szyfrowanie.SHA256(wpisaneHaslo).equals(haslo)){
+                Szyfrowanie.SECRET_KEY = wpisaneHaslo;
                 Intent intent = new Intent(this, MainMenu.class);
                 startActivity(intent);
             }

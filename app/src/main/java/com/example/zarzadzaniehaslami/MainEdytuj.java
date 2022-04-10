@@ -46,9 +46,9 @@ public class MainEdytuj extends Activity {
             Path path = file.toPath();
             List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
 
-            lines.set(4*licznik, login.getText().toString());
-            lines.set(4*licznik+1, haslo.getText().toString());
-            lines.set(4*licznik+2, linki.getText().toString());
+            lines.set(4*licznik, Szyfrowanie.encrypt(login.getText().toString()));
+            lines.set(4*licznik+1, Szyfrowanie.encrypt(haslo.getText().toString()));
+            lines.set(4*licznik+2, Szyfrowanie.encrypt(linki.getText().toString()));
             Files.write(path, lines, StandardCharsets.UTF_8);
             finish();
         }catch (Exception e) { }

@@ -8,12 +8,17 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class MainHaslo extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_haslo);
     }
+
+
 
     public void potwierdzHaslo(View view){
         TextView hasloTV = findViewById(R.id.FirstPass);
@@ -27,7 +32,7 @@ public class MainHaslo extends Activity {
         File file = new File(MainHaslo.this.getFilesDir(), "dane/MainHaslo.txt");
         try {
             FileWriter writer = new FileWriter(file);
-            writer.write(haslo);
+            writer.write(Szyfrowanie.SHA256(haslo));
             writer.flush();
             writer.close();
         }catch (Exception e) { }
