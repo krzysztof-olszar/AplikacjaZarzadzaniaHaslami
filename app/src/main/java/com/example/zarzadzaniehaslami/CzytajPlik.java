@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +53,30 @@ public class CzytajPlik {
         }
         fileWriter.flush();
         fileWriter.close();
+    }
+
+    public void dodaj(String login, String haslo, String link) throws IOException {
+        fileWriter = new FileWriter(file,true);
+
+        fileWriter.write(Szyfrowanie.encrypt(login)+"\n");
+        fileWriter.write(Szyfrowanie.encrypt(haslo)+"\n");
+        fileWriter.write(Szyfrowanie.encrypt(link)+"\n");
+        fileWriter.write("----------\n");
+
+        fileWriter.flush();
+        fileWriter.close();
+    }
+
+    public void edytuj(String login, String haslo, String link, int licznik) throws IOException {
+        try{
+            Path path = file.toPath();
+            List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+
+            lines.set(4*licznik, Szyfrowanie.encrypt(login));
+            lines.set(4*licznik+1, Szyfrowanie.encrypt(haslo));
+            lines.set(4*licznik+2, Szyfrowanie.encrypt(link));
+            Files.write(path, lines, StandardCharsets.UTF_8);
+        }catch (Exception e) { Log.println(Log.INFO,"c",e.toString());}
     }
 
 }
