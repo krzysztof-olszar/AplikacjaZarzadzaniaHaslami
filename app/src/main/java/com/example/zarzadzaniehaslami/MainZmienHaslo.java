@@ -57,7 +57,7 @@ public class MainZmienHaslo extends Activity {
                 File dane = new File(path,listaPlikow[i]);
 
                 CzytajPlik czytajPlik = new CzytajPlik(dane);
-                czytajPlik.konwertuj(OldKey);
+                czytajPlik.konwertuj();
             }
         }catch (Exception e) { }
         finish();

@@ -16,10 +16,14 @@ import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainElement extends Activity {
@@ -27,6 +31,7 @@ public class MainElement extends Activity {
     CzytajPlik czytajPlik;
     String name;
     File file;
+    boolean ulubione = false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_element);
@@ -37,9 +42,23 @@ public class MainElement extends Activity {
         file = new File(MainElement.this.getFilesDir(), path);
 
         czytajPlik = new CzytajPlik(file);
-        //Log.println(Log.INFO,"info: ", Integer.toString(czytajPlik.ilosc));
+        Log.println(Log.INFO,"info: ", Integer.toString(czytajPlik.ilosc));
         //Log.println(Log.INFO,"element",file.getPath());
 
+        try {
+            File ulubioneFile = new File(MainElement.this.getFilesDir(), "dane/ulubione.txt");
+            FileReader fileReader = null;
+            fileReader = new FileReader(ulubioneFile);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String temp = bufferedReader.readLine();
+            while (temp != null) {
+                if (temp.equals(name)) {
+                    ulubione = true;
+                    break;
+                }
+                temp = bufferedReader.readLine();
+            }
+        }catch (Exception e) { Log.println(Log.INFO,"Exception: ",e.toString());}
 
         TextView glownaNazwa = findViewById(R.id.serviceName);
         glownaNazwa.setText(name.substring(0,name.length()-4));
@@ -65,17 +84,17 @@ public class MainElement extends Activity {
         TextView textViewLinki = findViewById(R.id.Linki);
 
 
-        buttonLogin.setText(Szyfrowanie.decrypt(czytajPlik.loginy.get(licznik)));
-        buttonPassword.setText(Szyfrowanie.decrypt(czytajPlik.hasla.get(licznik)));
-        textViewLinki.setText(Szyfrowanie.decrypt(czytajPlik.linki.get(licznik)));
+        buttonLogin.setText(czytajPlik.loginy.get(licznik));
+        buttonPassword.setText(czytajPlik.hasla.get(licznik));
+        textViewLinki.setText(czytajPlik.linki.get(licznik));
     }
 
     public void edytuj(View view){
         Intent intent = new Intent(MainElement.this,MainEdytuj.class);
         intent.putExtra("nazwa", name);
-        intent.putExtra("login", Szyfrowanie.decrypt(czytajPlik.loginy.get(licznik)));
-        intent.putExtra("haslo", Szyfrowanie.decrypt(czytajPlik.hasla.get(licznik)));
-        intent.putExtra("linki", Szyfrowanie.decrypt(czytajPlik.linki.get(licznik)));
+        intent.putExtra("login", czytajPlik.loginy.get(licznik));
+        intent.putExtra("haslo", czytajPlik.hasla.get(licznik));
+        intent.putExtra("linki", czytajPlik.linki.get(licznik));
         intent.putExtra("licznik", Integer.toString(licznik));
         startActivity(intent);
     }
@@ -132,6 +151,35 @@ public class MainElement extends Activity {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("ZH",textview.getText().toString());
         clipboard.setPrimaryClip(clip);
+    }
+
+    public void zmienUlubione(View view) throws IOException {
+        File ulubioneFile = new File(MainElement.this.getFilesDir(), "dane/ulubione.txt");
+        if(!ulubione){
+            FileWriter fileWriter = new FileWriter(ulubioneFile, true);
+            fileWriter.write(name+"\n");
+            fileWriter.flush();
+            fileWriter.close();
+            ulubione = true;
+        }else{
+            FileReader fileReader = new FileReader(ulubioneFile);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            List<String> list = new ArrayList<>();
+            String temp = bufferedReader.readLine();
+            while(temp!=null){
+                if(!temp.equals(name)){
+                    list.add(temp);
+                }
+                temp = bufferedReader.readLine();
+            }
+            FileWriter fileWriter = new FileWriter(ulubioneFile, false);
+            for(int i=0;i<list.size();i++){
+                fileWriter.write(list.get(i));
+            }
+            fileWriter.flush();
+            fileWriter.close();
+            ulubione = false;
+        }
     }
 
 }

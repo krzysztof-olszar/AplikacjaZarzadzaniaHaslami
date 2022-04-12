@@ -27,13 +27,16 @@ public class CzytajPlik {
             this.file = plik;
             fileReader = new FileReader(file);
             bufferedReader = new BufferedReader(fileReader);
-            String temp = bufferedReader.readLine();
+            String temp = Szyfrowanie.decrypt(bufferedReader.readLine());
             for(int i=0;temp!=null;i++){
                 loginy.add(temp);
-                hasla.add(bufferedReader.readLine());
-                linki.add(bufferedReader.readLine());
+                hasla.add(Szyfrowanie.decrypt(bufferedReader.readLine()));
+                linki.add(Szyfrowanie.decrypt(bufferedReader.readLine()));
                 bufferedReader.readLine();
                 temp = bufferedReader.readLine();
+                if(temp!=null){
+                    temp = Szyfrowanie.decrypt(temp);
+                }
                 ilosc++;
             }
 
@@ -43,12 +46,12 @@ public class CzytajPlik {
         }
     }
 
-    public void konwertuj(String OldKey) throws IOException {
+    public void konwertuj() throws IOException {
         fileWriter = new FileWriter(file,false);
         for(int i=0;i<ilosc;i++){
-            fileWriter.write(Szyfrowanie.convert(OldKey,loginy.get(i))+"\n");
-            fileWriter.write(Szyfrowanie.convert(OldKey,hasla.get(i))+"\n");
-            fileWriter.write(Szyfrowanie.convert(OldKey,linki.get(i))+"\n");
+            fileWriter.write(Szyfrowanie.encrypt(loginy.get(i))+"\n");
+            fileWriter.write(Szyfrowanie.encrypt(hasla.get(i))+"\n");
+            fileWriter.write(Szyfrowanie.encrypt(linki.get(i))+"\n");
             fileWriter.write("----------\n");
         }
         fileWriter.flush();

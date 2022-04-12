@@ -114,6 +114,7 @@
         android:layout_marginStart="59dp"
         android:layout_marginEnd="59dp"
         android:layout_marginBottom="100dp"
+        android:onClick="zmienUlubione"
         android:src="@drawable/star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/gearButton"
