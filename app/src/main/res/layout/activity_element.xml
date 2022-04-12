@@ -89,7 +89,7 @@
         android:id="@+id/binButton"
         android:layout_width="51dp"
         android:layout_height="51dp"
-        android:layout_marginStart="95dp"
+        android:layout_marginStart="70dp"
         android:layout_marginBottom="100dp"
         android:onClick="usun"
         android:src="@drawable/bin"
@@ -100,10 +100,22 @@
         android:id="@+id/gearButton"
         android:layout_width="51dp"
         android:layout_height="51dp"
-        android:layout_marginEnd="95dp"
+        android:layout_marginEnd="70dp"
         android:layout_marginBottom="100dp"
         android:onClick="edytuj"
+        android:src="@drawable/gear"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/gear" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gearButton"
+        app:layout_constraintStart_toEndOf="@+id/binButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
