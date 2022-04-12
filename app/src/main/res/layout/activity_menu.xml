@@ -44,4 +44,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/gear" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Gear"
+        app:layout_constraintStart_toEndOf="@+id/dodaj"
+        android:src="@drawable/addkat" />
 </androidx.constraintlayout.widget.ConstraintLayout>
