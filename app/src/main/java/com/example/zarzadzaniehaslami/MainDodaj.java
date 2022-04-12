@@ -27,14 +27,8 @@ public class MainDodaj extends Activity {
         }
         try {
             File file = new File(path, nazwa.getText()+".txt");
-
-            FileWriter writer = new FileWriter(file,true);
-            writer.write(Szyfrowanie.encrypt(login.getText().toString())+"\n");
-            writer.write(Szyfrowanie.encrypt(haslo.getText().toString())+"\n");
-            writer.write(Szyfrowanie.encrypt(linki.getText().toString())+"\n");
-            writer.write("----------\n");
-            writer.flush();
-            writer.close();
+            CzytajPlik czytajPlik = new CzytajPlik(file);
+            czytajPlik.dodaj(login.getText().toString(), haslo.getText().toString(),linki.getText().toString());
             Toast.makeText(MainDodaj.this, "Pomyślnie dodano!", Toast.LENGTH_LONG).show();
             finish();
         } catch (Exception e) { }

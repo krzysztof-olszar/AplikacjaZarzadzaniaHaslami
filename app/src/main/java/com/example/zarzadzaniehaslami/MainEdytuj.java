@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class MainEdytuj extends Activity {
     String name;
-    File file;
+    CzytajPlik czytajPlik;
     TextView nazwa;
     TextView login;
     TextView haslo;
@@ -27,7 +28,7 @@ public class MainEdytuj extends Activity {
         Intent intent = this.getIntent();
         name = intent.getStringExtra("nazwa");
         String path = "dane/Baza/"+name;
-        file = new File(MainEdytuj.this.getFilesDir(), path);
+        czytajPlik = new CzytajPlik(new File(MainEdytuj.this.getFilesDir(), path));
 
         nazwa = findViewById(R.id.addnazwa);
         login = findViewById(R.id.addlogin);
@@ -40,18 +41,10 @@ public class MainEdytuj extends Activity {
         linki.setText(intent.getStringExtra("linki"));
     }
 
-    public void Zapisz(View view){
-        try{
-            int licznik = Integer.parseInt(this.getIntent().getStringExtra("licznik"));
-            Path path = file.toPath();
-            List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-
-            lines.set(4*licznik, Szyfrowanie.encrypt(login.getText().toString()));
-            lines.set(4*licznik+1, Szyfrowanie.encrypt(haslo.getText().toString()));
-            lines.set(4*licznik+2, Szyfrowanie.encrypt(linki.getText().toString()));
-            Files.write(path, lines, StandardCharsets.UTF_8);
-            finish();
-        }catch (Exception e) { }
+    public void Zapisz(View view) throws IOException {
+        int licznik = Integer.parseInt(this.getIntent().getStringExtra("licznik"));
+        czytajPlik.edytuj(login.getText().toString(),haslo.getText().toString(),linki.getText().toString(),licznik);
+        finish();
     }
 
 }
