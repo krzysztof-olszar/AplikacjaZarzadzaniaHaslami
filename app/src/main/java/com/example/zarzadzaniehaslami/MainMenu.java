@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class MainMenu extends Activity {
     int licznik=0;
@@ -73,8 +74,7 @@ public class MainMenu extends Activity {
 
             File file = new File(MainMenu.this.getFilesDir(), "dane/ulubione.txt");
             if (!file.exists()) {
-                file.mkdir();
-                licznik = (licznik+1)%2;
+                licznik = (licznik+1)%3;
                 //Log.println(Log.INFO,"x", "why");
                 return;
             }
@@ -99,6 +99,32 @@ public class MainMenu extends Activity {
                     startActivity(intent);
                 }
             });
+        }else if(licznik==2){//kategorie
+            ListView listView = findViewById(R.id.GlownaLista);
+            List<String> lista = new ArrayList<>();
+
+            File file = new File(MainMenu.this.getFilesDir(), "dane/Kategorie");
+            if (!file.exists()) {
+                file.mkdir();
+            }
+            if(file.list()==null){
+                licznik = (licznik+1)%3;
+                return;
+            }
+            Collections.addAll(lista, Objects.requireNonNull(file.list()));
+
+
+            Adapter adapter = new Adapter(getApplicationContext(), lista);
+
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent = new Intent(MainMenu.this, MainMenuKategorie.class);
+                    intent.putExtra("nazwa", lista.get(i));
+                    startActivity(intent);
+                }
+            });
         }
     }
 
@@ -108,7 +134,7 @@ public class MainMenu extends Activity {
     }
 
     public void zmienMenu(View view) throws IOException {
-        licznik = (licznik+1)%2;
+        licznik = (licznik+1)%3;
         //Log.println(Log.INFO,"x", Integer.toString(licznik));
         refresh();
     }

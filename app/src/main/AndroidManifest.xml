@@ -47,6 +47,10 @@
             android:name=".MainDodajKategorie"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".MainMenuKategorie"
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>
