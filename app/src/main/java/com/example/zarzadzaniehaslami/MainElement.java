@@ -84,30 +84,33 @@ public class MainElement extends Activity {
                 kategorie[i] = kategorie[i].substring(0,kategorie[i].length()-4);
             }
             Collections.addAll(lista, Objects.requireNonNull(kategorie));
-        }
 
-        //znajdz w ktorej kategorii jest obecnie
-        kategorie = kategoriePath.list();
-        outerloop:
-        for(int i=0;i<kategorie.length;i++){
-            File kategoria = new File(kategoriePath, kategorie[i]);
-            try {
-                FileReader fileReader = new FileReader(kategoria);
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
-                String temp = bufferedReader.readLine();
-                while(temp!=null){
-                    if(temp.equals(name)){
-                        poprzedniaKategoria = i+1;
-                        break outerloop;
+            //znajdz w ktorej kategorii jest obecnie
+            kategorie = kategoriePath.list();
+            outerloop:
+            for(int i=0;i<kategorie.length;i++){
+                File kategoria = new File(kategoriePath, kategorie[i]);
+                try {
+                    FileReader fileReader = new FileReader(kategoria);
+                    BufferedReader bufferedReader = new BufferedReader(fileReader);
+                    String temp = bufferedReader.readLine();
+                    while(temp!=null){
+                        if(temp.equals(name)){
+                            poprzedniaKategoria = i+1;
+                            break outerloop;
+                        }
+                        temp = bufferedReader.readLine();
                     }
-                    temp = bufferedReader.readLine();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
         }
+
+
+
 
         ArrayAdapter<String> adp = new ArrayAdapter<String> (this,android.R.layout.simple_spinner_dropdown_item,lista);
         spinner.setAdapter(adp);
