@@ -56,4 +56,15 @@
         app:layout_constraintEnd_toStartOf="@+id/Gear"
         app:layout_constraintStart_toEndOf="@+id/dodaj"
         android:src="@drawable/addkat" />
+
+    <ImageButton
+        android:id="@+id/zmienMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="1dp"
+        android:onClick="zmienMenu"
+        android:src="@drawable/addkat"
+        app:layout_constraintStart_toEndOf="@+id/dodaj"
+        app:layout_constraintTop_toBottomOf="@+id/GlownaLista" />
 </androidx.constraintlayout.widget.ConstraintLayout>
