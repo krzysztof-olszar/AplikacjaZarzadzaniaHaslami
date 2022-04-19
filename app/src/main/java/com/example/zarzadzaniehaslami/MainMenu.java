@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class MainMenu extends Activity {
-    int licznik=1;
+    int licznik=0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
@@ -111,6 +111,16 @@ public class MainMenu extends Activity {
         licznik = (licznik+1)%2;
         //Log.println(Log.INFO,"x", Integer.toString(licznik));
         refresh();
+    }
+
+    public void dodajKategorie(View view){
+        Intent intent = new Intent(this, MainDodajKategorie.class);
+        startActivity(intent);
+        try {
+            refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

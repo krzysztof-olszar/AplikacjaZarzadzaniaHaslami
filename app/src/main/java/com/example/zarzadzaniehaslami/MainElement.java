@@ -10,7 +10,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,13 +27,18 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class MainElement extends Activity {
     int licznik=0;
     CzytajPlik czytajPlik;
     String name;
     File file;
+    int poprzedniaKategoria=0;
+    File kategoriePath;
+    String[] kategorie;
     boolean ulubione = false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +70,100 @@ public class MainElement extends Activity {
 
         TextView glownaNazwa = findViewById(R.id.serviceName);
         glownaNazwa.setText(name.substring(0,name.length()-4));
+
+        //spinner
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayList<String> lista = new ArrayList<String>();
+
+        //dodac rzeczy
+        kategoriePath = new File(MainElement.this.getFilesDir(), "dane/Kategorie");
+        kategorie = kategoriePath.list();
+        lista.add("Brak kategorii");
+        if(kategorie!=null) {
+            for(int i=0;i<kategorie.length;i++){
+                kategorie[i] = kategorie[i].substring(0,kategorie[i].length()-4);
+            }
+            Collections.addAll(lista, Objects.requireNonNull(kategorie));
+        }
+
+        //znajdz w ktorej kategorii jest obecnie
+        kategorie = kategoriePath.list();
+        outerloop:
+        for(int i=0;i<kategorie.length;i++){
+            File kategoria = new File(kategoriePath, kategorie[i]);
+            try {
+                FileReader fileReader = new FileReader(kategoria);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                String temp = bufferedReader.readLine();
+                while(temp!=null){
+                    if(temp.equals(name)){
+                        poprzedniaKategoria = i+1;
+                        break outerloop;
+                    }
+                    temp = bufferedReader.readLine();
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        ArrayAdapter<String> adp = new ArrayAdapter<String> (this,android.R.layout.simple_spinner_dropdown_item,lista);
+        spinner.setAdapter(adp);
+        spinner.setSelection(poprzedniaKategoria);
+        spinner.setVisibility(View.VISIBLE);
+        //Set listener Called when the item is selected in spinner
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long arg3) {
+                if(poprzedniaKategoria==position){
+                    return;
+                }
+                if(poprzedniaKategoria!=0){
+                    //usun
+                    File file = new File(kategoriePath, kategorie[poprzedniaKategoria-1]);
+
+                    Path path = file.toPath();
+                    List<String> lines = null;
+                    try {
+                        lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+
+                        for(int l=0;l<lines.size();l++) {
+                                if(lines.get(l).equals(name)){
+                                    lines.remove(l);
+                                    break;
+                                }
+                        }
+                        Files.write(path, lines, StandardCharsets.UTF_8);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if(position!=0){
+                    //dodaj
+                    File file = new File(kategoriePath, kategorie[position-1]);
+                    try {
+                        FileWriter fileWriter = new FileWriter(file,true);
+                        fileWriter.write(name+"\n");
+                        fileWriter.flush();
+                        fileWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+                poprzedniaKategoria = position;
+            }
+
+            public void onNothingSelected(AdapterView<?> arg0)
+            {
+                //
+            }
+        });
+
+
+
         refresh();
     }
 
