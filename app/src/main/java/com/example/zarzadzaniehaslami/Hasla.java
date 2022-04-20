@@ -77,7 +77,7 @@ public class Hasla {
         String turboString = znaki+liczby+duzeZnaki+znakiSpecjalne;
         Random rand = new Random();
         for(int i=0; i<haslo.length;i++){
-            int randomNum = rand.nextInt(turboString.length() + 1) ;
+            int randomNum = rand.nextInt(turboString.length()) ;
             haslo[i] = turboString.charAt(randomNum);
         }
         return new String(haslo);

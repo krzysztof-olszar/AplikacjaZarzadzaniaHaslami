@@ -2,6 +2,7 @@ package com.example.zarzadzaniehaslami;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.view.View;
 import android.widget.Toast;
@@ -32,5 +33,22 @@ public class MainDodaj extends Activity {
             Toast.makeText(MainDodaj.this, "Pomyślnie dodano!", Toast.LENGTH_LONG).show();
             finish();
         } catch (Exception e) { }
+    }
+
+    public void Generuj(View view){
+        CheckBox znakiSpecjalne = findViewById(R.id.znakiSpecjalne);
+        CheckBox duzeZnaki = findViewById(R.id.duzeZnaki);
+        CheckBox liczby = findViewById(R.id.liczby);
+        TextView dlugosc = findViewById(R.id.dlugosc);
+
+        TextView haslo = findViewById(R.id.addhaslo);
+        int dlugoscHasla;
+        try {
+            dlugoscHasla = Integer.parseInt(dlugosc.getText().toString());
+
+        }catch (NumberFormatException e){
+            dlugoscHasla = 6;
+        }
+        haslo.setText(Hasla.generujHaslo(dlugoscHasla,duzeZnaki.isChecked(),liczby.isChecked(),znakiSpecjalne.isChecked()));
     }
 }
