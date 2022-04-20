@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.io.File;
@@ -45,6 +46,23 @@ public class MainEdytuj extends Activity {
         int licznik = Integer.parseInt(this.getIntent().getStringExtra("licznik"));
         czytajPlik.edytuj(login.getText().toString(),haslo.getText().toString(),linki.getText().toString(),licznik);
         finish();
+    }
+
+    public void Generuj(View view){
+        CheckBox znakiSpecjalne = findViewById(R.id.znakiSpecjalne);
+        CheckBox duzeZnaki = findViewById(R.id.duzeZnaki);
+        CheckBox liczby = findViewById(R.id.liczby);
+        TextView dlugosc = findViewById(R.id.dlugosc);
+
+        TextView haslo = findViewById(R.id.addhaslo);
+        int dlugoscHasla;
+        try {
+            dlugoscHasla = Integer.parseInt(dlugosc.getText().toString());
+
+        }catch (Exception e){
+            dlugoscHasla = 6;
+        }
+        haslo.setText(Hasla.generujHaslo(dlugoscHasla,duzeZnaki.isChecked(),liczby.isChecked(),znakiSpecjalne.isChecked()));
     }
 
 }
