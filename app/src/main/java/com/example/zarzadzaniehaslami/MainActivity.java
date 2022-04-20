@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -37,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         } catch (Exception e) { }
+        /*Log.println(Log.INFO,"score", Integer.toString(Hasla.silaHasla("AniaAA")));
+        Log.println(Log.INFO,"score", Integer.toString(Hasla.silaHasla("Adam-Sandler2137")));
+        Log.println(Log.INFO,"score", Hasla.generujHaslo(20,true,true,true));*/
     }
 
 
