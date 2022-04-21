@@ -149,4 +149,14 @@ public class MainMenu extends Activity {
         }
     }
 
+    @Override
+    public void onResume () {
+        super.onResume();
+        try {
+            refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

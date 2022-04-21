@@ -1,6 +1,7 @@
 package com.example.zarzadzaniehaslami;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -31,6 +32,11 @@ public class MainDodaj extends Activity {
             CzytajPlik czytajPlik = new CzytajPlik(file);
             czytajPlik.dodaj(login.getText().toString(), haslo.getText().toString(),linki.getText().toString());
             Toast.makeText(MainDodaj.this, "Pomyślnie dodano!", Toast.LENGTH_LONG).show();
+
+
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("some_key", "String data");
+            setResult(Activity.RESULT_OK, resultIntent);
             finish();
         } catch (Exception e) { }
     }

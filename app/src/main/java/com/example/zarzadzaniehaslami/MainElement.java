@@ -287,4 +287,15 @@ public class MainElement extends Activity {
         }
     }
 
+    @Override
+    public void onResume () {
+        super.onResume();
+        reload();
+        refresh();
+    }
+
+    private void reload(){
+        czytajPlik = new CzytajPlik(file);
+    }
+
 }
