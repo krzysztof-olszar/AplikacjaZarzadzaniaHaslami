@@ -33,10 +33,6 @@ public class MainDodaj extends Activity {
             czytajPlik.dodaj(login.getText().toString(), haslo.getText().toString(),linki.getText().toString());
             Toast.makeText(MainDodaj.this, "Pomyślnie dodano!", Toast.LENGTH_LONG).show();
 
-
-            Intent resultIntent = new Intent();
-            resultIntent.putExtra("some_key", "String data");
-            setResult(Activity.RESULT_OK, resultIntent);
             finish();
         } catch (Exception e) { }
     }

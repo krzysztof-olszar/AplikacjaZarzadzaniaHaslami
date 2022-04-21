@@ -27,16 +27,20 @@ public class CzytajPlik {
             this.file = plik;
             fileReader = new FileReader(file);
             bufferedReader = new BufferedReader(fileReader);
-            String temp = Szyfrowanie.decrypt(bufferedReader.readLine());
-            for(int i=0;temp!=null;i++){
-                loginy.add(temp);
-                hasla.add(Szyfrowanie.decrypt(bufferedReader.readLine()));
-                linki.add(Szyfrowanie.decrypt(bufferedReader.readLine()));
-                bufferedReader.readLine();
+            String temp = bufferedReader.readLine();
+            String GIGAString = "";
+            while(temp!=null){
+                GIGAString += temp;
                 temp = bufferedReader.readLine();
-                if(temp!=null){
-                    temp = Szyfrowanie.decrypt(temp);
-                }
+            }
+            GIGAString = Szyfrowanie.decrypt(GIGAString);
+            Log.println(Log.INFO,"GIGASTRINg",GIGAString);
+            String[] linijki = GIGAString.split("\n");
+            Log.println(Log.INFO,"loginy[o]",linijki[0]);
+            for(int i = 0;i<linijki.length/4;i++){
+                loginy.add(linijki[4*i]);
+                hasla.add(linijki[4*i+1]);
+                linki.add(linijki[4*i+2]);
                 ilosc++;
             }
 
@@ -46,25 +50,44 @@ public class CzytajPlik {
         }
     }
 
-    public void konwertuj() throws IOException {
-        fileWriter = new FileWriter(file,false);
-        for(int i=0;i<ilosc;i++){
-            fileWriter.write(Szyfrowanie.encrypt(loginy.get(i))+"\n");
-            fileWriter.write(Szyfrowanie.encrypt(hasla.get(i))+"\n");
-            fileWriter.write(Szyfrowanie.encrypt(linki.get(i))+"\n");
-            fileWriter.write("----------\n");
+    public void konwertuj(String oldKey) throws IOException {
+        fileReader = new FileReader(file);
+        bufferedReader = new BufferedReader(fileReader);
+        String temp = bufferedReader.readLine();
+        String GIGAString = "";
+        while (temp != null) {
+            GIGAString += temp;
+            temp = bufferedReader.readLine();
         }
+
+
+        fileWriter = new FileWriter(file,false);
+        fileWriter.write(Szyfrowanie.convert(oldKey,GIGAString));
         fileWriter.flush();
         fileWriter.close();
     }
 
     public void dodaj(String login, String haslo, String link) throws IOException {
-        fileWriter = new FileWriter(file,true);
+        String GIGAString = "";
+        if(file.exists()) {
+            fileReader = new FileReader(file);
+            bufferedReader = new BufferedReader(fileReader);
 
-        fileWriter.write(Szyfrowanie.encrypt(login)+"\n");
-        fileWriter.write(Szyfrowanie.encrypt(haslo)+"\n");
-        fileWriter.write(Szyfrowanie.encrypt(link)+"\n");
-        fileWriter.write("----------\n");
+            String temp = bufferedReader.readLine();
+            while (temp != null) {
+                GIGAString += temp;
+                temp = bufferedReader.readLine();
+            }
+            GIGAString = Szyfrowanie.decrypt(GIGAString);
+        }
+        GIGAString += login+"\n";
+        GIGAString += haslo+"\n";
+        GIGAString += link+"\n";
+        GIGAString += "----------\n";
+
+        fileWriter = new FileWriter(file,false);
+
+        fileWriter.write(Szyfrowanie.encrypt(GIGAString));
 
         fileWriter.flush();
         fileWriter.close();
@@ -72,13 +95,34 @@ public class CzytajPlik {
 
     public void edytuj(String login, String haslo, String link, int licznik) throws IOException {
         try{
-            Path path = file.toPath();
-            List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+            String GIGAString = "";
+            fileReader = new FileReader(file);
+            bufferedReader = new BufferedReader(fileReader);
 
-            lines.set(4*licznik, Szyfrowanie.encrypt(login));
-            lines.set(4*licznik+1, Szyfrowanie.encrypt(haslo));
-            lines.set(4*licznik+2, Szyfrowanie.encrypt(link));
-            Files.write(path, lines, StandardCharsets.UTF_8);
+            String temp = bufferedReader.readLine();
+            while (temp != null) {
+                GIGAString += temp;
+                temp = bufferedReader.readLine();
+            }
+            GIGAString = Szyfrowanie.decrypt(GIGAString);
+
+            String[] linijki = GIGAString.split("\n");
+
+            linijki[4*licznik] = login;
+            linijki[4*licznik+1] = haslo;
+            linijki[4*licznik+2] = link;
+            GIGAString = "";
+            for(int i = 0;i<linijki.length;i++){
+                GIGAString += linijki[i]+"\n";
+                Log.println(Log.INFO,"info?", linijki[i]);
+            }
+            Log.println(Log.INFO,"GIGASTRINg prev",GIGAString);
+            fileWriter = new FileWriter(file,false);
+
+            fileWriter.write(Szyfrowanie.encrypt(GIGAString));
+
+            fileWriter.flush();
+            fileWriter.close();
         }catch (Exception e) { Log.println(Log.INFO,"c",e.toString());}
     }
 
