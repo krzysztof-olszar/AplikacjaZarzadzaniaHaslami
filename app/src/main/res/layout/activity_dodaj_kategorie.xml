@@ -8,12 +8,13 @@
 
     <EditText
         android:id="@+id/addnazwa"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="236dp"
+        android:layout_marginEnd="50dp"
         android:autofillHints=""
-        android:background="#404040"
+        android:background="#40444B"
         android:ellipsize="none"
         android:ems="10"
         android:inputType="text"
@@ -21,15 +22,16 @@
         android:onClick="Dodaj"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textnazwa"
-        android:layout_width="101dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="126dp"
-        android:text="Nazwa:"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="184dp"
+        android:text="Nazwa kategorii"
         android:textAlignment="center"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"

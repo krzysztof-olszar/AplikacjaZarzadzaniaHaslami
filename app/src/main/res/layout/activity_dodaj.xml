@@ -6,33 +6,42 @@
     android:layout_height="match_parent"
     android:theme="@style/Theme.tlo">
 
-    <CheckBox
-        android:id="@+id/liczby"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="52dp"
-        android:text="CheckBox"
-        app:layout_constraintEnd_toStartOf="@+id/znakiSpecjalne"
-        app:layout_constraintTop_toBottomOf="@+id/texthaslo" />
+    <TextView
+        android:id="@+id/textnazwa"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="76dp"
+        android:text="Nazwa:"
+        android:textAlignment="center"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
-        android:id="@+id/duzeZnaki"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="32dp"
-        android:text="CheckBox"
-        app:layout_constraintEnd_toStartOf="@+id/znakiSpecjalne"
-        app:layout_constraintTop_toBottomOf="@+id/addhaslo" />
+    <EditText
+        android:id="@+id/addnazwa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="40dp"
+        android:autofillHints=""
+        android:background="#40444B"
+        android:ellipsize="none"
+        android:ems="10"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/addlogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="40dp"
         android:autofillHints=""
-        android:background="#404040"
+        android:background="#40444B"
         android:ellipsize="none"
         android:ems="10"
         android:inputType="text"
@@ -46,7 +55,7 @@
         android:layout_width="101dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="156dp"
         android:text="Login:"
         android:textAlignment="center"
         android:textSize="26sp"
@@ -57,10 +66,10 @@
         android:id="@+id/addhaslo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="230dp"
         android:layout_marginEnd="40dp"
         android:autofillHints=""
-        android:background="#404040"
+        android:background="#40444B"
         android:ellipsize="none"
         android:ems="10"
         android:inputType="text"
@@ -74,36 +83,8 @@
         android:layout_width="101dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="286dp"
+        android:layout_marginTop="236dp"
         android:text="Hasło:"
-        android:textAlignment="center"
-        android:textSize="26sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/addnazwa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="40dp"
-        android:autofillHints=""
-        android:background="#404040"
-        android:ellipsize="none"
-        android:ems="10"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textnazwa"
-        android:layout_width="101dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="126dp"
-        android:text="Nazwa:"
         android:textAlignment="center"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -113,10 +94,10 @@
         android:id="@+id/addlink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="448dp"
         android:layout_marginEnd="36dp"
         android:autofillHints=""
-        android:background="#404040"
+        android:background="#40444B"
         android:ellipsize="none"
         android:ems="10"
         android:inputType="text"
@@ -129,9 +110,9 @@
         android:id="@+id/textlink"
         android:layout_width="101dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="444dp"
-        android:text="Link:"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="452dp"
+        android:text="Opis:"
         android:textAlignment="center"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -142,42 +123,60 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="180dp"
-        android:layout_marginBottom="104dp"
-        android:onClick="Dodaj"
+        android:layout_marginBottom="84dp"
+        android:onClick="Zapisz"
         android:src="@drawable/ok"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
-        android:id="@+id/generuj"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="36dp"
-        android:onClick="Generuj"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addhaslo"
-        app:srcCompat="@android:drawable/ic_media_ff" />
+    <CheckBox
+        android:id="@+id/liczby"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="310dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/duzeZnaki"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/znakiSpecjalne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="19dp"
-        android:checked="false"
-        android:text="CheckBox"
-        app:layout_constraintEnd_toStartOf="@+id/generuj"
-        app:layout_constraintTop_toBottomOf="@+id/addhaslo" />
+        android:id="@+id/duzeZnaki"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="310dp"
+        android:layout_marginEnd="11dp"
+        app:layout_constraintEnd_toStartOf="@+id/znakiSpecjalne"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/generuj"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="310dp"
+        android:layout_marginEnd="36dp"
+        android:onClick="Generuj"
+        android:src="@drawable/generuj"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/dlugosc"
         android:layout_width="85dp"
         android:layout_height="40dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="316dp"
+        android:background="#40444B"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@+id/liczby"
-        app:layout_constraintTop_toBottomOf="@+id/texthaslo" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/znakiSpecjalne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="310dp"
+        android:layout_marginEnd="12dp"
+        android:checked="false"
+        app:layout_constraintEnd_toStartOf="@+id/generuj"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

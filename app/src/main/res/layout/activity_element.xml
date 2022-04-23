@@ -54,10 +54,11 @@
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="108dp"
         android:layout_marginEnd="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Password" />
 
@@ -115,18 +116,20 @@
         android:layout_marginEnd="59dp"
         android:layout_marginBottom="100dp"
         android:onClick="zmienUlubione"
-        android:src="@drawable/star"
+        android:src="@drawable/falsestar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/gearButton"
         app:layout_constraintStart_toEndOf="@+id/binButton" />
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="409dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="14dp"
-        android:background="#DC4242"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="128dp"
+        android:background="#42464D"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Password" />
 </androidx.constraintlayout.widget.ConstraintLayout>
