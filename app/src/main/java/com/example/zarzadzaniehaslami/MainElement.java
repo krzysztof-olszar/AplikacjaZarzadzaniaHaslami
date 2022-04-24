@@ -217,6 +217,56 @@ public class MainElement extends Activity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 //usuwa
                 if(czytajPlik.ilosc==1){
+                    //usuwa z kategorii
+                    if(poprzedniaKategoria!=0){
+                        //usun
+                        File file = new File(kategoriePath, kategorie[poprzedniaKategoria-1]);
+
+                        Path path = file.toPath();
+                        List<String> lines = null;
+                        try {
+                            lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+
+                            for(int l=0;l<lines.size();l++) {
+                                if(lines.get(l).equals(name)){
+                                    lines.remove(l);
+                                    break;
+                                }
+                            }
+                            Files.write(path, lines, StandardCharsets.UTF_8);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if(ulubione){
+                        try {
+                            File ulubioneFile = new File(MainElement.this.getFilesDir(), "dane/ulubione.txt");
+                            FileReader fileReader = new FileReader(ulubioneFile);
+                            BufferedReader bufferedReader = new BufferedReader(fileReader);
+                            List<String> list = new ArrayList<>();
+                            String temp = bufferedReader.readLine();
+                            while (temp != null) {
+                                if (!temp.equals(name)) {
+                                    list.add(temp);
+                                }
+                                temp = bufferedReader.readLine();
+                            }
+                            FileWriter fileWriter = new FileWriter(ulubioneFile, false);
+                            for (int l = 0; l < list.size(); l++) {
+                                fileWriter.write(list.get(l));
+                            }
+                            fileWriter.flush();
+                            fileWriter.close();
+                            ulubione = false;
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+
                     file.delete();
                     finish();
                 }else{
