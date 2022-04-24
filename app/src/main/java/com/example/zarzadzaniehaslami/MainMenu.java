@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,6 +69,9 @@ public class MainMenu extends Activity {
                     startActivity(intent);
                 }
             });
+            ImageButton button = (ImageButton)findViewById(R.id.zmienMenu);
+            button.setImageResource(R.drawable.commonlist);
+
         }else if(licznik==1){//ulubione
             ListView listView = findViewById(R.id.GlownaLista);
             List<String> lista = new ArrayList<>();
@@ -99,6 +103,9 @@ public class MainMenu extends Activity {
                     startActivity(intent);
                 }
             });
+            ImageButton button = (ImageButton)findViewById(R.id.zmienMenu);
+            button.setImageResource(R.drawable.star);
+
         }else if(licznik==2){//kategorie
             ListView listView = findViewById(R.id.GlownaLista);
             List<String> lista = new ArrayList<>();
@@ -125,6 +132,8 @@ public class MainMenu extends Activity {
                     startActivity(intent);
                 }
             });
+            ImageButton button = (ImageButton)findViewById(R.id.zmienMenu);
+            button.setImageResource(R.drawable.katalogi);
         }
     }
 

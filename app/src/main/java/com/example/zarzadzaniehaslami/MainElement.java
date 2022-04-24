@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -75,7 +74,7 @@ public class MainElement extends Activity {
         glownaNazwa.setText(name.substring(0,name.length()-4));
 
         //spinner
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        Spinner spinner = (Spinner) findViewById(R.id.spinnerdel);
         ArrayList<String> lista = new ArrayList<String>();
 
         //dodac rzeczy
