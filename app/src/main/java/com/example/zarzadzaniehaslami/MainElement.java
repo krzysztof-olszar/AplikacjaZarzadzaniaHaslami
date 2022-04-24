@@ -63,6 +63,8 @@ public class MainElement extends Activity {
             while (temp != null) {
                 if (temp.equals(name)) {
                     ulubione = true;
+                    ImageButton button = (ImageButton)findViewById(R.id.imageButton4);
+                    button.setImageResource(R.drawable.star);
                     break;
                 }
                 temp = bufferedReader.readLine();
@@ -267,6 +269,10 @@ public class MainElement extends Activity {
             fileWriter.flush();
             fileWriter.close();
             ulubione = true;
+
+
+            ImageButton button = (ImageButton)findViewById(R.id.imageButton4);
+            button.setImageResource(R.drawable.star);
         }else{
             FileReader fileReader = new FileReader(ulubioneFile);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -285,6 +291,9 @@ public class MainElement extends Activity {
             fileWriter.flush();
             fileWriter.close();
             ulubione = false;
+
+            ImageButton button = (ImageButton)findViewById(R.id.imageButton4);
+            button.setImageResource(R.drawable.falsestar);
         }
     }
 
