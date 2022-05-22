@@ -158,6 +158,11 @@ public class MainMenu extends Activity {
         }
     }
 
+    public void otworzArchiwum(View view){
+        Intent intent = new Intent(this, MainArchiwum.class);
+        startActivity(intent);
+    }
+
     @Override
     public void onResume () {
         super.onResume();

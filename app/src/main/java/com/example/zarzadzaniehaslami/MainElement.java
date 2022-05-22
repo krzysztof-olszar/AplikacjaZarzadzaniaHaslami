@@ -215,6 +215,14 @@ public class MainElement extends Activity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //usuwa
+                //najpierw dodaj do archiwum
+                CzytajPlikArchiwum czytajPlikArchiwum = new CzytajPlikArchiwum(new File(MainElement.this.getFilesDir(), "dane/Archiwum.txt"));
+                try {
+                    czytajPlikArchiwum.dodaj(name,czytajPlik.loginy.get(licznik),czytajPlik.hasla.get(licznik),czytajPlik.linki.get(licznik),"dzisiaj");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                //nastepnie usun
                 if(czytajPlik.ilosc==1){
                     //usuwa z kategorii
                     if(poprzedniaKategoria!=0){

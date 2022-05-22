@@ -7,22 +7,21 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CzytajPlik {
+public class CzytajPlikArchiwum {
+    List<String> nazwa = new ArrayList<>();
     List<String> loginy = new ArrayList<>();
     List<String> hasla = new ArrayList<>();
     List<String> linki = new ArrayList<>();
+    List<String> data = new ArrayList<>();
     FileReader fileReader;
     BufferedReader bufferedReader;
     int ilosc=0;
     File file;
     FileWriter fileWriter;
-    CzytajPlik(File plik){
+    CzytajPlikArchiwum(File plik){
         try{
             this.file = plik;
             fileReader = new FileReader(file);
@@ -37,10 +36,12 @@ public class CzytajPlik {
             //Log.println(Log.INFO,"GIGASTRINg",GIGAString);
             String[] linijki = GIGAString.split("\n");
             //Log.println(Log.INFO,"loginy[o]",linijki[0]);
-            for(int i = 0;i<linijki.length/4;i++){
-                loginy.add(linijki[4*i]);
-                hasla.add(linijki[4*i+1]);
-                linki.add(linijki[4*i+2]);
+            for(int i = 0;i<linijki.length/6;i++){
+                nazwa.add(linijki[6*i]);
+                loginy.add(linijki[6*i+1]);
+                hasla.add(linijki[6*i+2]);
+                linki.add(linijki[6*i+3]);
+                data.add(linijki[6*i+4]);
                 ilosc++;
             }
 
@@ -67,7 +68,7 @@ public class CzytajPlik {
         fileWriter.close();
     }
 
-    public void dodaj(String login, String haslo, String link) throws IOException {
+    public void dodaj(String nazwa, String login, String haslo, String link, String data) throws IOException {
         String GIGAString = "";
         if(file.exists()) {
             fileReader = new FileReader(file);
@@ -80,9 +81,11 @@ public class CzytajPlik {
             }
             GIGAString = Szyfrowanie.decrypt(GIGAString);
         }
+        GIGAString += nazwa+"\n";
         GIGAString += login+"\n";
         GIGAString += haslo+"\n";
         GIGAString += link+"\n";
+        GIGAString += data+"\n";
         GIGAString += "----------\n";
 
         fileWriter = new FileWriter(file,false);
@@ -93,7 +96,7 @@ public class CzytajPlik {
         fileWriter.close();
     }
 
-    public void edytuj(String login, String haslo, String link, int licznik) throws IOException {
+    public void edytuj(String login, String haslo, String link, int licznik) throws IOException {//nieużywane
         try{
             String GIGAString = "";
             fileReader = new FileReader(file);

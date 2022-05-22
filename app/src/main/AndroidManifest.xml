@@ -24,6 +24,10 @@
             android:exported="false">
         </activity>
         <activity
+            android:name=".MainArchiwum"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".MainElement"
             android:exported="false">
         </activity>
