@@ -129,4 +129,37 @@ public class CzytajPlikArchiwum {
         }catch (Exception e) { Log.println(Log.INFO,"c",e.toString());}
     }
 
+    public void usun(int licznik){
+        try{
+            String GIGAString = "";
+            fileReader = new FileReader(file);
+            bufferedReader = new BufferedReader(fileReader);
+
+            String temp = bufferedReader.readLine();
+            while (temp != null) {
+                GIGAString += temp;
+                temp = bufferedReader.readLine();
+            }
+            GIGAString = Szyfrowanie.decrypt(GIGAString);
+
+            String[] linijki = GIGAString.split("\n");
+
+            GIGAString = "";
+            //Log.println(Log.INFO,"i ",Integer.toString(licznik));
+            for(int i = 0;i<linijki.length;i++){
+                if((i-i%6)/6==licznik){
+                    continue;
+                }
+                GIGAString += linijki[i]+"\n";
+                //Log.println(Log.INFO,"info?", linijki[i]);
+            }
+            //Log.println(Log.INFO,"GIGASTRINg prev",GIGAString);
+            fileWriter = new FileWriter(file,false);
+
+            fileWriter.write(Szyfrowanie.encrypt(GIGAString));
+
+            fileWriter.flush();
+            fileWriter.close();
+        }catch (Exception e) { Log.println(Log.INFO,"c","Bladdddd:"+e.toString());}
+    }
 }

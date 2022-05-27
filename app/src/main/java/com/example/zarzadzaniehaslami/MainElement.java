@@ -278,14 +278,34 @@ public class MainElement extends Activity {
                     finish();
                 }else{
                     try{
-                        Path path = file.toPath();
-                        List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-                        /*for(int l=0;l<lines.size();l++) {
-                            Log.println(Log.INFO, "wypisz", lines.get(l));
-                        }*/
-                        for(int l=0;l<4;l++) {
-                            lines.remove(4*licznik);
+                        String GIGAString = "";
+                        FileReader fileReader = new FileReader(file);
+                        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+                        String temp = bufferedReader.readLine();
+                        while (temp != null) {
+                            GIGAString += temp;
+                            temp = bufferedReader.readLine();
                         }
+                        GIGAString = Szyfrowanie.decrypt(GIGAString);
+
+                        String[] linijki = GIGAString.split("\n");
+
+                        GIGAString = "";
+                        for(int j = 0;j<linijki.length;j++){
+                            if((j-j%4)/4==licznik){
+                                continue;
+                            }
+                            GIGAString += linijki[j]+"\n";
+                            //Log.println(Log.INFO,"info?", linijki[i]);
+                        }
+                        //Log.println(Log.INFO,"GIGASTRINg prev",GIGAString);
+                        FileWriter fileWriter = new FileWriter(file, false);
+
+                        fileWriter.write(Szyfrowanie.encrypt(GIGAString));
+
+                        fileWriter.flush();
+                        fileWriter.close();
 
                         czytajPlik.loginy.remove(licznik);
                         czytajPlik.hasla.remove(licznik);
@@ -293,9 +313,7 @@ public class MainElement extends Activity {
                         czytajPlik.ilosc--;
                         licznik = (licznik+1) % czytajPlik.ilosc;
                         refresh();
-
-                        Files.write(path, lines, StandardCharsets.UTF_8);
-                    }catch (Exception e) { }
+                    }catch (Exception e) {Log.println(Log.INFO,"c","Tutaj blad:"+e.toString()); }
                 }
                 dialogInterface.dismiss();
             }
