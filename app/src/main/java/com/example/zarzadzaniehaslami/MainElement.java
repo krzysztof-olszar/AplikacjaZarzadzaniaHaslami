@@ -26,8 +26,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -218,7 +220,8 @@ public class MainElement extends Activity {
                 //najpierw dodaj do archiwum
                 CzytajPlikArchiwum czytajPlikArchiwum = new CzytajPlikArchiwum(new File(MainElement.this.getFilesDir(), "dane/Archiwum.txt"));
                 try {
-                    czytajPlikArchiwum.dodaj(name,czytajPlik.loginy.get(licznik),czytajPlik.hasla.get(licznik),czytajPlik.linki.get(licznik),"dzisiaj");
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+                    czytajPlikArchiwum.dodaj(name,czytajPlik.loginy.get(licznik),czytajPlik.hasla.get(licznik),czytajPlik.linki.get(licznik),sdf.format(new Date()));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

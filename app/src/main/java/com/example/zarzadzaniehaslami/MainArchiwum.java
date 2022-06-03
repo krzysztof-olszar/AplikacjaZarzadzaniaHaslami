@@ -21,8 +21,11 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -48,6 +51,20 @@ public class MainArchiwum extends Activity {
         CzytajPlikArchiwum czytajPlikArchiwum = new CzytajPlikArchiwum(file);
 
         for(int i=0;i<czytajPlikArchiwum.ilosc;i++){
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+            long differenceDates = 0;
+            try {
+                Date date = sdf.parse(czytajPlikArchiwum.data.get(i));
+                long difference = Math.abs(date.getTime() - new Date().getTime());
+                differenceDates = difference / (24 * 60 * 60 * 1000);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            if(differenceDates>30){//kiedy jest w archiwum dluzej niz miesiac to usun
+                czytajPlikArchiwum.usun(i);
+                continue;
+            }
             ArchiwumDoWyswietlenia temp = new ArchiwumDoWyswietlenia(czytajPlikArchiwum.nazwa.get(i).substring(0,czytajPlikArchiwum.nazwa.get(i).length()-4),czytajPlikArchiwum.loginy.get(i), czytajPlikArchiwum.hasla.get(i), czytajPlikArchiwum.data.get(i));
             lista.add(temp);
         }
