@@ -49,6 +49,9 @@ public class MainArchiwum extends Activity {
             return;
         }/////
         CzytajPlikArchiwum czytajPlikArchiwum = new CzytajPlikArchiwum(file);
+        if(czytajPlikArchiwum.ilosc==0){
+            finish();
+        }
 
         for(int i=0;i<czytajPlikArchiwum.ilosc;i++){
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");

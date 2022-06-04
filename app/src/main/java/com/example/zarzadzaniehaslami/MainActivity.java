@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                     if(!file1.exists()) {
                         FileWriter writer = null;
                         try {
-                            writer = new FileWriter(file,false);
+                            writer = new FileWriter(file1,false);
                             writer.write("0");
                             writer.flush();
                             writer.close();

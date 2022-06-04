@@ -3,6 +3,8 @@ package com.example.zarzadzaniehaslami;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.view.View;
@@ -15,6 +17,30 @@ public class MainDodaj extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dodaj);
+
+
+        TextView haslo = findViewById(R.id.addhaslo);
+        TextView silaHasla = findViewById(R.id.SilaHasla);
+        haslo.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                int Sila = Hasla.silaHasla(s.toString());
+                if(Sila>70){
+                    silaHasla.setText("Mocne!");
+                }else if(Sila>40){
+                    silaHasla.setText("Srednie!");
+                }else{
+                    silaHasla.setText("Słabe!");
+                }
+            }
+        });
     }
 
     public void Dodaj(View view){
