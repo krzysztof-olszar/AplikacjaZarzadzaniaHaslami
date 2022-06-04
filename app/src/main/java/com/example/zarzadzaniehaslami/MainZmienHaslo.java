@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,11 +13,23 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class MainZmienHaslo extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zmienhaslo);
+        File spr = new File(MainZmienHaslo.this.getFilesDir(),"dane/ustawienia.txt");
+        try {
+            FileReader fileReader = new FileReader(spr);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            if(bufferedReader.readLine().equals("1")){
+                CheckBox czek = findViewById(R.id.czek);
+                czek.setChecked(true);
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void zmienHaslo(View view){
@@ -64,8 +77,33 @@ public class MainZmienHaslo extends Activity {
         finish();
     }
 
-    public void bio(View view) {
-        Intent intent = new Intent(this, BiometricDemoActivity.class);
-        startActivity(intent);
+
+    public void dwuetap(View view){
+        File file = new File(MainZmienHaslo.this.getFilesDir(), "dane/ustawienia.txt");
+        CheckBox checkdwuetap = findViewById(R.id.czek);
+        if(checkdwuetap.isChecked()) {
+            FileWriter writer = null;
+            try {
+                writer = new FileWriter(file,false);
+                writer.write("1");
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            FileWriter writer = null;
+            try {
+                writer = new FileWriter(file,false);
+                writer.write("0");
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
     }
 }

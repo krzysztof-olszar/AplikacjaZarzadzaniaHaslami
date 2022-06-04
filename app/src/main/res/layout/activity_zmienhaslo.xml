@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     android:theme="@style/Theme.tlo">
 
-    <ImageButton
-        android:id="@+id/editAccept"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginBottom="100dp"
-        android:onClick="bio"
-        android:src="@drawable/ok"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/TextPass1"
         android:layout_width="0dp"
@@ -126,6 +115,17 @@
         android:src="@drawable/ok"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/czek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="100dp"
+        android:onClick="dwuetap"
+        android:text="CheckBox"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

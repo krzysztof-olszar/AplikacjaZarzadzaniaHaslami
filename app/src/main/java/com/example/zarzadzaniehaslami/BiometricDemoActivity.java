@@ -40,6 +40,8 @@ public class BiometricDemoActivity extends Activity {
         checkBiometricSupport();
     }
 
+
+
     private Boolean checkBiometricSupport() {
 
         KeyguardManager keyguardManager =
