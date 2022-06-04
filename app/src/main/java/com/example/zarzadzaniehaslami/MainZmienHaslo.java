@@ -1,6 +1,7 @@
 package com.example.zarzadzaniehaslami;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -61,5 +62,10 @@ public class MainZmienHaslo extends Activity {
             }
         }catch (Exception e) { }
         finish();
+    }
+
+    public void bio(View view) {
+        Intent intent = new Intent(this, BiometricDemoActivity.class);
+        startActivity(intent);
     }
 }

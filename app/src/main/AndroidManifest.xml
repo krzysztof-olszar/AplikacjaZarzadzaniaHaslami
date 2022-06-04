@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.zarzadzaniehaslami">
+    package="com.ebookfrenzy.biometricdemo">
+
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
 
     <application
         android:allowBackup="true"
@@ -54,6 +57,10 @@
         </activity>
         <activity
             android:name=".MainMenuKategorie"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".BiometricDemoActivity"
             android:exported="false">
         </activity>
     </application>
