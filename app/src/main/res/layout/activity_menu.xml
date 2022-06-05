@@ -32,33 +32,33 @@
         android:id="@+id/imageButton5"
         android:layout_width="51dp"
         android:layout_height="51dp"
-        android:layout_marginEnd="60dp"
         android:layout_marginBottom="8dp"
         android:onClick="dodajKategorie"
         android:src="@drawable/addkat"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Gear"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/ButtonArchiwum"
         android:layout_width="51dp"
         android:layout_height="51dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="8dp"
         android:onClick="otworzArchiwum"
-        android:src="@drawable/addkat"
+        android:src="@drawable/archiwum"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Gear" />
+        app:layout_constraintEnd_toStartOf="@+id/Gear"
+        app:layout_constraintStart_toEndOf="@+id/imageButton5" />
 
     <ImageButton
         android:id="@+id/zmienMenu"
         android:layout_width="51dp"
         android:layout_height="51dp"
-        android:layout_marginStart="60dp"
         android:layout_marginBottom="8dp"
         android:onClick="zmienMenu"
         android:src="@drawable/katalogi"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton5"
         app:layout_constraintStart_toEndOf="@+id/dodaj" />
 
     <ImageButton

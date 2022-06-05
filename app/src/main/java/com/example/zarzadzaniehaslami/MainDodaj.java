@@ -2,6 +2,7 @@ package com.example.zarzadzaniehaslami;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -33,10 +34,13 @@ public class MainDodaj extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 int Sila = Hasla.silaHasla(s.toString());
                 if(Sila>70){
+                    silaHasla.setTextColor(Color.parseColor("#00FF00"));
                     silaHasla.setText("Mocne!");
                 }else if(Sila>40){
+                    silaHasla.setTextColor(Color.parseColor("#FFFF00"));
                     silaHasla.setText("Srednie!");
                 }else{
+                    silaHasla.setTextColor(Color.parseColor("#FF0000"));
                     silaHasla.setText("Słabe!");
                 }
             }
