@@ -43,11 +43,11 @@ public class MainDodajKategorie extends Activity {
         try {
             File file = new File(path, nazwa.getText()+".txt");
             if(file.exists()){
-                Toast.makeText(MainDodajKategorie.this, "Już istnieje taka kategoria!", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainDodajKategorie.this, "Już istnieje taka kategoria", Toast.LENGTH_SHORT).show();
                 finish();
             }
             FileWriter fileWriter = new FileWriter(file);
-            Toast.makeText(MainDodajKategorie.this, "Pomyślnie dodano!", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainDodajKategorie.this, "Pomyślnie dodano kategorię", Toast.LENGTH_SHORT).show();
             finish();
         } catch (Exception e) { }
     }
@@ -55,6 +55,7 @@ public class MainDodajKategorie extends Activity {
         if(wybrany!=0) {
             File doUsuniecia = new File(MainDodajKategorie.this.getFilesDir(), "dane/Kategorie/" + name);
             doUsuniecia.delete();
+            Toast.makeText(MainDodajKategorie.this, "Pomyślnie usunięto kategorię", Toast.LENGTH_SHORT).show();
             wybrany=0;
             refreshSpinner();
         }

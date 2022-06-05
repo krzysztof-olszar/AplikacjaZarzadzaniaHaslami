@@ -40,7 +40,7 @@ public class MainZmienHaslo extends Activity {
         String haslo = hasloTV.getText().toString();
         String potwierdzHaslo = potwierdzHasloTV.getText().toString();
         if(!haslo.equals(potwierdzHaslo)){
-            Toast.makeText(MainZmienHaslo.this, "Hasła się nie zgadzają", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainZmienHaslo.this, "Hasła się nie zgadzają", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -51,7 +51,7 @@ public class MainZmienHaslo extends Activity {
             String stareHasloWPliku = bufferedReader.readLine();
 
             if(!Szyfrowanie.SHA256(stareHaslo).equals(stareHasloWPliku)){
-                Toast.makeText(MainZmienHaslo.this, "Złe stare hasło", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainZmienHaslo.this, "Złe stare hasło", Toast.LENGTH_SHORT).show();
                 return;
             }
             FileWriter writer = new FileWriter(file);
@@ -74,6 +74,7 @@ public class MainZmienHaslo extends Activity {
                 czytajPlik.konwertuj(OldKey);
             }
         }catch (Exception e) { }
+        Toast.makeText(MainZmienHaslo.this, "Pomyślnie zmieniono hasło aplikacji", Toast.LENGTH_SHORT).show();
         finish();
     }
 

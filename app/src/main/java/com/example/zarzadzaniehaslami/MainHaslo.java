@@ -26,7 +26,7 @@ public class MainHaslo extends Activity {
         String haslo = hasloTV.getText().toString();
         String potwierdzHaslo = potwierdzHasloTV.getText().toString();
         if(!haslo.equals(potwierdzHaslo)){
-            Toast.makeText(MainHaslo.this, "Hasła się nie zgadzają", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainHaslo.this, "Hasła się nie zgadzają", Toast.LENGTH_SHORT).show();
             return;
         }
         File file = new File(MainHaslo.this.getFilesDir(), "dane/MainHaslo.txt");

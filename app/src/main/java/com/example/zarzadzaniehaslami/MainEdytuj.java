@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -84,6 +85,7 @@ public class MainEdytuj extends Activity {
     public void Zapisz(View view) throws IOException {
         int licznik = Integer.parseInt(this.getIntent().getStringExtra("licznik"));
         czytajPlik.edytuj(login.getText().toString(),haslo.getText().toString(),linki.getText().toString(),licznik);
+        Toast.makeText(MainEdytuj.this, "Pomyślnie zedytowano", Toast.LENGTH_SHORT).show();
         finish();
     }
 

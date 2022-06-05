@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -50,6 +51,7 @@ public class MainArchiwum extends Activity {
         }/////
         CzytajPlikArchiwum czytajPlikArchiwum = new CzytajPlikArchiwum(file);
         if(czytajPlikArchiwum.ilosc==0){
+            Toast.makeText(MainArchiwum.this, "Archiwum jest puste", Toast.LENGTH_SHORT).show();
             finish();
         }
 

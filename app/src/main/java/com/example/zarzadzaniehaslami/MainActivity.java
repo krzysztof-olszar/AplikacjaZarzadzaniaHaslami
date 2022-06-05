@@ -204,6 +204,8 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+            }else{
+                Toast.makeText(MainActivity.this, "Błędne hasło", Toast.LENGTH_SHORT).show();
             }
         }catch (Exception e) { }
     }

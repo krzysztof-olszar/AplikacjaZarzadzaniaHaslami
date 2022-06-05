@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -278,6 +279,7 @@ public class MainElement extends Activity {
 
 
                     file.delete();
+                    Toast.makeText(MainElement.this, "Pomyślnie usunięto", Toast.LENGTH_SHORT).show();
                     finish();
                 }else{
                     try{
@@ -315,6 +317,7 @@ public class MainElement extends Activity {
                         czytajPlik.linki.remove(licznik);
                         czytajPlik.ilosc--;
                         licznik = (licznik+1) % czytajPlik.ilosc;
+                        Toast.makeText(MainElement.this, "Pomyślnie usunięto", Toast.LENGTH_SHORT).show();
                         refresh();
                     }catch (Exception e) {Log.println(Log.INFO,"c","Tutaj blad:"+e.toString()); }
                 }
