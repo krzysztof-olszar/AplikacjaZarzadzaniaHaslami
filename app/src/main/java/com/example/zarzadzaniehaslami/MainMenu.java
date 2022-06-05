@@ -80,6 +80,7 @@ public class MainMenu extends Activity {
             if (!file.exists()) {
                 licznik = (licznik+1)%3;
                 //Log.println(Log.INFO,"x", "why");
+                refresh();
                 return;
             }
             FileReader fileReader = new FileReader(file);
@@ -116,6 +117,7 @@ public class MainMenu extends Activity {
             }
             if(file.list()==null){
                 licznik = (licznik+1)%3;
+                refresh();
                 return;
             }
             Collections.addAll(lista, Objects.requireNonNull(file.list()));

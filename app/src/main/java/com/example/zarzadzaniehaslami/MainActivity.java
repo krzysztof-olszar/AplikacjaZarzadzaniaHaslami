@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         } catch (Exception e) { }
+        Log.println(Log.INFO,"score", Integer.toString(Hasla.silaHasla("aaaaaa")));
         /*Log.println(Log.INFO,"score", Integer.toString(Hasla.silaHasla("AniaAA")));
         Log.println(Log.INFO,"score", Integer.toString(Hasla.silaHasla("Adam-Sandler2137")));
         Log.println(Log.INFO,"score", Hasla.generujHaslo(20,true,true,true));*/
