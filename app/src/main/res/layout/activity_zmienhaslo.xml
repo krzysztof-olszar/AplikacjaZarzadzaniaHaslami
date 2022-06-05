@@ -11,56 +11,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="50dp"
         android:text="Podaj stare hasło:"
         android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TextPass2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="210dp"
-        android:layout_marginEnd="50dp"
-        android:text="Podaj nowe hasło:"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TextPass3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="360dp"
-        android:layout_marginEnd="50dp"
-        android:text="Powtórz hasło:"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/EditPass1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="50dp"
-        android:autofillHints=""
-        android:background="#40444B"
-        android:ellipsize="none"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -72,26 +26,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="266dp"
-        android:layout_marginEnd="50dp"
-        android:autofillHints=""
-        android:background="#40444B"
-        android:ellipsize="none"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/EditPass3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="416dp"
+        android:layout_marginTop="240dp"
         android:layout_marginEnd="50dp"
         android:autofillHints=""
         android:background="#40444B"
@@ -105,12 +40,80 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/EditPass1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="50dp"
+        android:autofillHints=""
+        android:background="#40444B"
+        android:ellipsize="none"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/EditPass3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="388dp"
+        android:layout_marginEnd="50dp"
+        android:autofillHints=""
+        android:background="#40444B"
+        android:ellipsize="none"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TextPass3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="332dp"
+        android:layout_marginEnd="50dp"
+        android:text="Powtórz hasło:"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TextPass2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="184dp"
+        android:layout_marginEnd="50dp"
+        android:text="Podaj nowe hasło:"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageButton
         android:id="@+id/EditAccept"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="180dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginBottom="164dp"
         android:onClick="zmienHaslo"
         android:src="@drawable/ok"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -118,13 +121,24 @@
 
     <CheckBox
         android:id="@+id/czek"
+        android:layout_width="31dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="188dp"
+        android:layout_marginBottom="32dp"
+        android:onClick="dwuetap"
+        android:text="  "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="100dp"
-        android:onClick="dwuetap"
-        android:text="CheckBox"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="76dp"
+        android:layout_marginBottom="20dp"
+        android:text="Logowanie dwuetapowe"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/czek"
         app:layout_constraintEnd_toEndOf="parent" />
 
 
