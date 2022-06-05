@@ -73,6 +73,10 @@ public class MainZmienHaslo extends Activity {
                 CzytajPlik czytajPlik = new CzytajPlik(dane);
                 czytajPlik.konwertuj(OldKey);
             }
+            File dane = new File(MainZmienHaslo.this.getFilesDir(),"dane/Archiwum.txt");
+
+            CzytajPlikArchiwum czytajPlikArchiwum = new CzytajPlikArchiwum(dane);
+            czytajPlikArchiwum.konwertuj(OldKey);
         }catch (Exception e) { }
         Toast.makeText(MainZmienHaslo.this, "Pomyślnie zmieniono hasło aplikacji", Toast.LENGTH_SHORT).show();
         finish();
